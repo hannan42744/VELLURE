@@ -6,6 +6,11 @@
     <title>Vellure Fragrances | Premium Luxury Attar</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vellurefragrances.com/">
+    <meta property="og:title" content="Vellure Fragrances - Premium Attar & Perfume">
+    <meta property="og:description" content="Discover 100% pure, long-lasting alcohol-free luxury attars and premium fragrances.">
+    <meta property="og:image" content="https://vellurefragrances.com/image2/Acqua%20Digio.png">
     <style>
         :root {
             --bg-color: #080808;
@@ -20,87 +25,164 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-light); line-height: 1.5; }
+        body { background-color: var(--bg-color); color: var(--text-light); line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
         header { background-color: rgba(8, 8, 8, 0.95); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(16px); }
         .nav-container { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 24px; }
-        .brand-logo-img { height: 70px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); cursor: pointer; }
+        
+        .brand-logo-link { display: flex; align-items: center; text-decoration: none; }
+        .brand-logo-img { 
+            height: 80px; 
+            width: auto; 
+            max-width: 260px; 
+            object-fit: contain; 
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .brand-logo-img:hover {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+        }
 
         .cart-icon-btn { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--accent-gold); padding: 10px 18px; border-radius: 30px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
         .cart-icon-btn:hover { background: var(--accent-gold); color: #000; }
         .cart-count { background: var(--accent-gold); color: #000; font-size: 11px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        .hero { text-align: center; padding: 60px 20px 40px; background: linear-gradient(135deg, #050505 0%, #1a1508 50%, #080808 100%); }
-        .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(26px, 4vw, 40px); color: #FFF; margin-bottom: 8px; }
-        .hero p { color: var(--text-muted); font-size: 14px; }
+        .hero { 
+            position: relative; 
+            text-align: center; 
+            padding: 100px 20px 80px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 420px; 
+            background: linear-gradient(135deg, #050505 0%, #1a1508 50%, #080808 100%);
+            background-size: 200% 200%;
+            animation: luxuryGlow 12s ease infinite;
+        }
 
-        .container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+        @keyframes luxuryGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 60%);
+            animation: pulseLight 8s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulseLight {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
         
-        /* Product Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-bottom: 60px; }
-        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; cursor: pointer; }
-        .product-card:hover { border-color: rgba(212,175,55,0.5); transform: translateY(-4px); }
-        .product-image-container { width: 100%; height: 240px; background: #0e0e0e; padding: 20px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hero-content { position: relative; z-index: 3; max-width: 800px; }
+        .hero-subtitle { color: var(--accent-gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(30px, 5vw, 48px); color: #FFF; margin-bottom: 12px; letter-spacing: 1px; text-shadow: 0 4px 10px rgba(0,0,0,0.9); }
+        .hero p { text-shadow: 0 2px 4px rgba(0,0,0,0.8); color: var(--text-light); }
+        
+        .filter-container { max-width: 800px; margin: 40px auto 40px; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .search-input { background: #121212; border: 1px solid var(--border-color); padding: 10px 18px; border-radius: 20px; color: #fff; outline: none; flex-grow: 1; max-width: 320px; }
+        .search-input:focus { border-color: var(--accent-gold); }
+        .filter-btn { background: #121212; border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--accent-gold); color: #000; font-weight: 600; border-color: var(--accent-gold); }
+
+        .trust-badges { max-width: 1280px; margin: 0 auto 40px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; padding: 0 24px; text-align: center; }
+        .badge-item { background: #101010; border: 1px solid var(--border-color); border-radius: 12px; padding: 18px 24px; flex: 1; min-width: 220px; transition: transform 0.3s; }
+        .badge-item:hover { transform: translateY(-3px); border-color: rgba(212,175,55,0.4); }
+        .badge-item i { font-size: 26px; color: var(--accent-gold); margin-bottom: 8px; }
+        .badge-item h4 { font-size: 14px; color: #fff; margin-bottom: 4px; }
+        .badge-item p { font-size: 11px; color: var(--text-muted); }
+
+        .product-grid { max-width: 1280px; margin: 0 auto 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; padding: 0 24px; }
+        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
+        .product-card:hover { border-color: rgba(212,175,55,0.5); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .product-image-container { width: 100%; height: 260px; background: #0e0e0e; padding: 20px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color); position: relative; cursor: pointer; }
         .product-image { width: 100%; height: 100%; object-fit: contain; }
-        
-        .product-info { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-family: 'Cinzel', serif; font-size: 15px; color: #FFF; margin-bottom: 6px; }
-        .product-price { font-size: 15px; font-weight: 700; color: var(--accent-gold); margin-bottom: 12px; }
-        .card-btn { background: var(--accent-gold); color: #000; border: none; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; }
-        .card-btn:hover { background: #b8952d; }
+        .stock-tag { position: absolute; top: 12px; left: 12px; background: rgba(37, 211, 102, 0.15); color: var(--success-green); border: 1px solid rgba(37, 211, 102, 0.3); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 12px; }
 
-        /* Product Detail Page View */
-        #productDetailSection { display: none; padding: 20px 0; }
-        .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
-        .breadcrumb span { color: var(--accent-gold); cursor: pointer; }
-        
-        .pdp-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 40px; }
-        @media(max-width: 768px) { .pdp-container { grid-template-columns: 1fr; padding: 16px; } }
-        
-        .pdp-images-wrapper { display: flex; gap: 16px; }
-        .pdp-thumbnails { display: flex; flex-direction: column; gap: 10px; }
-        .pdp-thumb { width: 60px; height: 60px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; object-fit: contain; background: #0e0e0e; padding: 4px; transition: 0.2s; }
-        .pdp-thumb.active, .pdp-thumb:hover { border-color: var(--accent-gold); }
-        .pdp-main-img-box { flex-grow: 1; background: #0e0e0e; border: 1px solid var(--border-color); border-radius: 12px; height: 380px; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .pdp-main-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .rating { color: var(--accent-gold); font-size: 12px; margin-bottom: 6px; }
+        .product-title { font-family: 'Cinzel', serif; font-size: 16px; color: #FFF; margin-bottom: 6px; cursor: pointer; }
+        .product-title:hover { color: var(--accent-gold); }
+        .notes-tag { font-size: 11px; color: var(--accent-gold-light); background: rgba(212,175,55,0.08); padding: 4px 8px; border-radius: 4px; margin-bottom: 10px; display: inline-block; cursor: pointer; border: 1px dashed rgba(212,175,55,0.3); }
+        .product-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; flex-grow: 1; }
 
-        .pdp-details h1 { font-family: 'Cinzel', serif; font-size: 24px; color: #fff; margin-bottom: 10px; }
-        .pdp-price { font-size: 20px; font-weight: 700; color: var(--accent-gold); margin-bottom: 16px; }
-        .pdp-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
-        
-        .variant-selector { display: flex; gap: 10px; margin-bottom: 20px; }
-        .variant-btn { background: #181818; border: 1px solid var(--border-color); color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
-        .variant-btn.active { border-color: var(--accent-gold); background: rgba(212,175,55,0.1); color: var(--accent-gold); }
+        .size-price-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; background: #000; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .size-select { background: transparent; color: var(--text-light); border: none; outline: none; font-size: 13px; font-weight: 600; cursor: pointer; }
+        .size-select option { background: #121212; }
+        .product-price { font-size: 15px; font-weight: 700; color: var(--accent-gold); }
+        .add-cart-btn { background: var(--accent-gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .add-cart-btn:hover { background: #b8952d; }
 
-        .pdp-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-        .btn-row { display: flex; gap: 10px; }
-        .btn-cart { flex: 1; background: #1a1a1a; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-cart:hover { background: var(--accent-gold); color: #000; }
-        .btn-buy { flex: 1; background: var(--accent-gold); color: #000; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; }
-        .btn-buy:hover { background: #b8952d; }
-        .btn-whatsapp { background: var(--success-green); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; text-decoration: none; font-size: 14px; }
+        .testimonials-section { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; text-align: center; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 26px; color: var(--accent-gold); margin-bottom: 8px; }
+        .section-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 30px; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: left; position: relative; }
+        .review-user { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-gold); color: #000; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .user-details h5 { font-size: 14px; color: #fff; }
+        .user-details span { font-size: 11px; color: var(--text-muted); }
+        .review-text { font-size: 12px; color: #ccc; font-style: italic; }
 
-        /* Tabs Section */
-        .pdp-tabs-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-bottom: 40px; }
-        .tab-headers { display: flex; gap: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px; }
-        .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 14px; font-weight: 600; cursor: pointer; }
-        .tab-btn.active { color: var(--accent-gold); }
-        .tab-content { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .whatsapp-float { position: fixed; bottom: 24px; right: 24px; background: var(--success-green); color: #fff; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* Customer Reviews Grid */
-        .reviews-section { margin-top: 40px; }
-        .reviews-title { font-family: 'Cinzel', serif; font-size: 20px; color: var(--accent-gold); margin-bottom: 16px; }
-        .review-img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .review-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color); }
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); z-index: 1999; display: none; }
+        .cart-drawer { position: fixed; top: 0; right: -450px; width: 100%; max-width: 440px; height: 100%; background: #101010; border-left: 1px solid var(--border-color); z-index: 2000; transition: right 0.4s ease; display: flex; flex-direction: column; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { padding: 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .cart-body { padding: 20px; flex-grow: 1; overflow-y: auto; }
+        .cart-item { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color); }
+        .cart-item-img { width: 50px; height: 50px; background: #1a1a1a; border-radius: 6px; object-fit: contain; }
 
-        /* Cart Drawer & Footer omitted for brevity, keeping main structure */
+        .cart-footer { padding: 20px; border-top: 1px solid var(--border-color); background: #0a0a0a; }
+        .form-group { margin-bottom: 10px; }
+        .form-input { width: 100%; background: #181818; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px; color: #FFF; font-size: 13px; outline: none; }
+        .form-input:focus { border-color: var(--accent-gold); }
+        .checkout-direct-btn { background: var(--accent-gold); color: #000; border: none; width: 100%; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .checkout-direct-btn:hover { background: #b8952d; }
+
+        .generic-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
+        .modal-content { background: #121212; border: 1px solid var(--accent-gold); border-radius: 16px; padding: 30px; max-width: 500px; width: 100%; text-align: center; max-height: 85vh; overflow-y: auto; }
+        .policy-modal-content { text-align: left; }
+        .policy-modal-content h2 { font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 16px; }
+        .policy-modal-content p, .policy-modal-content ul { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6; }
+        .policy-modal-content ul { padding-left: 20px; }
+
+        .notes-pyramid { text-align: left; background: #080808; padding: 16px; border-radius: 8px; margin: 16px 0; border: 1px solid var(--border-color); }
+        .notes-pyramid div { font-size: 12px; margin-bottom: 8px; }
+        .notes-pyramid strong { color: var(--accent-gold); display: inline-block; width: 90px; }
+
+        footer { background: #040404; border-top: 1px solid var(--border-color); padding: 50px 24px 20px; }
+        .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 16px; font-size: 16px; }
+        .footer-col p, .footer-col a { color: var(--text-muted); font-size: 13px; text-decoration: none; margin-bottom: 10px; display: block; cursor: pointer; }
+        .footer-col a:hover { color: var(--accent-gold); }
+        .footer-socials { display: flex; gap: 14px; margin-top: 14px; }
+        .footer-socials a { background: #121212; border: 1px solid var(--border-color); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-light); transition: 0.3s; }
+        .footer-socials a:hover { background: var(--accent-gold); color: #000; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <img src="https://i.postimg.cc/sfHfDz9C/logo-dark-png.png" alt="VELLURE" class="brand-logo-img" onclick="goHome()">
+            <a href="#" class="brand-logo-link">
+                <img src="https://i.postimg.cc/sfHfDz9C/logo-dark-png.png" alt="VELLURE" class="brand-logo-img">
+            </a>
             <button class="cart-icon-btn" onclick="toggleCart()">
                 <i class="fas fa-shopping-bag"></i> <span>Cart</span>
                 <span class="cart-count" id="cartCount">0</span>
@@ -108,210 +190,531 @@
         </div>
     </header>
 
-    <div class="container">
-        <!-- Main Shop View -->
-        <div id="mainShopSection">
-            <section class="hero">
-                <h1>PURE ELEGANCE IN EVERY DROP</h1>
-                <p>100% Pure, Long-Lasting Alcohol-Free Luxury Attar</p>
-            </section>
-            <div class="product-grid" id="productGrid"></div>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Concentrated Perfume Oil</div>
+            <h1>PURE ELEGANCE IN EVERY DROP</h1>
+            <p>100% Pure, Long-Lasting Alcohol-Free Luxury Attar</p>
         </div>
+    </section>
 
-        <!-- Product Detail Page (PDP) View -->
-        <div id="productDetailSection">
-            <div class="breadcrumb">
-                <span onclick="goHome()">Home</span> / <span id="breadCat">Male</span> / <span id="breadName" style="color:#fff;">Product</span>
-            </div>
+    <div class="filter-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search attar name..." oninput="filterProducts()">
+        <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-btn" onclick="setFilter('Combo', this)">Combo Offers</button>
+        <button class="filter-btn" onclick="setFilter('Fresh', this)">Fresh</button>
+        <button class="filter-btn" onclick="setFilter('Woody', this)">Woody</button>
+        <button class="filter-btn" onclick="setFilter('Floral', this)">Floral & Sweet</button>
+    </div>
 
-            <div class="pdp-container">
-                <div class="pdp-images-wrapper">
-                    <div class="pdp-thumbnails" id="pdpThumbnails"></div>
-                    <div class="pdp-main-img-box">
-                        <img id="pdpMainImg" src="" alt="" class="pdp-main-img">
+    <div class="trust-badges">
+        <div class="badge-item"><i class="fas fa-leaf"></i><h4>100% Alcohol Free</h4><p>Pure concentrated perfume oil</p></div>
+        <div class="badge-item"><i class="fas fa-stopwatch"></i><h4>Long Lasting</h4><p>Stays fresh for 24+ hours</p></div>
+        <div class="badge-item"><i class="fas fa-truck-fast"></i><h4>Fast Delivery</h4><p>Safe shipping across Bangladesh</p></div>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
+    <section class="testimonials-section">
+        <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
+        <p class="section-subtitle">Real experiences from our valued fragrance enthusiasts</p>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-user">
+                    <div class="user-avatar">AH</div>
+                    <div class="user-details">
+                        <h5>Abrar Hasan</h5>
+                        <div class="rating">★★★★★</div>
                     </div>
                 </div>
-
-                <div class="pdp-details">
-                    <h1 id="pdpTitle">Product Name</h1>
-                    <div class="pdp-price" id="pdpPrice">৳ 0</div>
-                    
-                    <div style="font-size: 13px; color: var(--accent-gold); margin-bottom: 8px;">Select Size:</div>
-                    <div class="variant-selector" id="pdpVariants"></div>
-
-                    <p class="pdp-desc" id="pdpDesc">Product description goes here...</p>
-
-                    <div class="pdp-actions">
-                        <div class="btn-row">
-                            <button class="btn-cart" onclick="addCurrentToCart()">ADD TO CART</button>
-                            <button class="btn-buy" onclick="buyNowCurrent()">BUY NOW</button>
-                        </div>
-                        <a id="whatsappOrderBtn" href="#" target="_blank" class="btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
-                        </a>
+                <p class="review-text">"Vellure Baccarat Rouge এর ঘ্রাণটা জাস্ট অসাধারণ! কাপড়ে ২ দিন পর পর্যন্ত ঘ্রাণ থাকে। প্রিমিয়াম প্যাকিং এর জন্য ধন্যবাদ।"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-user">
+                    <div class="user-avatar">MR</div>
+                    <div class="user-details">
+                        <h5>Mahmudur Rahman</h5>
+                        <div class="rating">★★★★★</div>
                     </div>
                 </div>
+                <p class="review-text">"Musk Safi আর Blue De Chanel দুটিই অর্ডার করেছিলাম। লংজিভিটি নিয়ে কোনো কথা হবে না, ১০০% অ্যালকোল ফ্রি অরিজিনাল তেল।"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-user">
+                    <div class="user-avatar">SR</div>
+                    <div class="user-details">
+                        <h5>Sadia Rahman</h5>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Bombshell এর সুইট স্মেলটা আমার খুবই পছন্দ হয়েছে। একদিনের মধ্যেই ঢাকায় ক্যাশ অন ডেলিভারি পেয়েছি।"</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/8801820032330?text=Hello%20Vellure,%20I%20have%20a%20query%20about%20your%20attars." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2 style="font-family:'Cinzel'; color:var(--accent-gold);">Your Cart</h2>
+            <button style="background:none; border:none; color:#fff; cursor:pointer;" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+        
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div style="margin-bottom:12px; font-weight:600; color:var(--accent-gold); font-size:13px;">Customer & Delivery Info</div>
+            <div class="form-group"><input type="text" id="custName" class="form-input" placeholder="Full Name *" required></div>
+            <div class="form-group"><input type="tel" id="custPhone" class="form-input" placeholder="Phone Number *" required></div>
+            <div class="form-group"><input type="text" id="custAddress" class="form-input" placeholder="Full Delivery Address *" required></div>
+            <div class="form-group">
+                <select id="deliveryZone" class="form-input" onchange="updateCartUI()">
+                    <option value="80">Inside Dhaka (৳80)</option>
+                    <option value="150">Outside Dhaka (৳150)</option>
+                </select>
             </div>
 
-            <div class="pdp-tabs-section">
-                <div class="tab-headers">
-                    <button class="tab-btn active">DESCRIPTION</button>
-                </div>
-                <div class="tab-content" id="pdpTabDesc">
-                    Detailed fragrance profile, top notes, heart notes, base notes and longevity information.
-                </div>
-            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;"><span>Subtotal:</span><span id="subTotal">৳ 0</span></div>
+            <div style="display:flex; justify-content:space-between; margin:4px 0; font-size:13px;"><span>Delivery:</span><span id="delCharge">৳ 80</span></div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px; font-weight:700; font-size:16px; color:var(--accent-gold);"><span>Total:</span><span id="cartTotal">৳ 0</span></div>
+            
+            <button class="checkout-direct-btn" id="confirmBtn" onclick="processDirectOrder()">Confirm Order Now</button>
+        </div>
+    </div>
 
-            <div class="reviews-section">
-                <div class="reviews-title">Customer Review Photos</div>
-                <div class="review-img-grid">
-                    <img src="image2/Acqua Digio.png" class="review-thumb">
-                    <img src="image2/Baccarat Rouge.png" class="review-thumb">
-                    <img src="image2/Blue DE Chanel.png" class="review-thumb">
-                    <img src="image2/cool water.png" class="review-thumb">
+    <!-- Product Details Modal (দুটি ছবি দেখানোর জন্য) -->
+    <div class="generic-modal" id="productModal">
+        <div class="modal-content" style="max-width: 600px; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px;">
+                <h2 id="modalTitle" style="font-family:'Cinzel'; color:var(--accent-gold); font-size: 18px;"></h2>
+                <button style="background:none; border:none; color:#fff; font-size: 22px; cursor:pointer;" onclick="closeModal('productModal')">&times;</button>
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                <div style="flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 10px;">
+                    <img id="modalImg1" src="" style="width: 100%; height: 180px; object-fit: contain; background: #080808; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <img id="modalImg2" src="" style="width: 100%; height: 180px; object-fit: contain; background: #080808; border-radius: 8px; border: 1px solid var(--border-color);">
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <p id="modalPrice" style="color:var(--accent-gold); font-size: 20px; font-weight: 700; margin-bottom: 10px;"></p>
+                    <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 15px;">১০০% অ্যালকোহল ফ্রি এবং দীর্ঘস্থায়ী প্রিমিয়াম সুবাস।</p>
+                    <button class="add-cart-btn" style="width:100%;" onclick="addToCartFromModal()">Confirm Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="generic-modal" id="orderModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle" style="font-size: 50px; color: var(--success-green); margin-bottom: 16px;"></i>
+            <h2 style="font-family:'Cinzel'; color:#fff; margin-bottom:10px;">Order Placed Successfully!</h2>
+            <p style="color:var(--text-muted); font-size:13px; margin-bottom:20px;">Thank you for your order. We have recorded your request and will call you shortly to confirm delivery.</p>
+            <div id="modalOrderDetails" style="background:#0a0a0a; padding:12px; border-radius:8px; text-align:left; font-size:12px; margin-bottom:20px; color:#ccc;"></div>
+            <button class="add-cart-btn" style="width:100%;" onclick="closeModal('orderModal')">Back to Shopping</button>
+        </div>
+    </div>
+
+    <div class="generic-modal" id="notesModal">
+        <div class="modal-content policy-modal-content">
+            <h2 id="modalAttarTitle" style="font-family:'Cinzel'; color:var(--accent-gold);">Fragrance Notes</h2>
+            <div id="modalNotesBody"></div>
+            <button class="add-cart-btn" style="width:100%; margin-top:16px;" onclick="closeModal('notesModal')">Close</button>
+        </div>
+    </div>
+
+    <div class="generic-modal" id="policyModal">
+        <div class="modal-content policy-modal-content">
+            <div id="policyModalBody"></div>
+            <button class="add-cart-btn" style="width:100%; margin-top:16px;" onclick="closeModal('policyModal')">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>VELLURE FRAGRANCES</h3>
+                <p>Luxury concentrated perfume oils crafted for timeless elegance and unbeatable sophistication.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/vellurefragrance" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/vellure.mart/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +880 1820-032330</p>
+                <p><i class="fas fa-envelope"></i> contact@vellurefragrances.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Care</h3>
+                <a onclick="showPolicy('privacy')">Privacy Policy</a>
+                <a onclick="showPolicy('terms')">Terms & Conditions</a>
+                <a onclick="showPolicy('refund')">Return & Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Vellure Fragrances. All rights reserved.</div>
+    </footer>
+
     <script>
+        const TELEGRAM_BOT_TOKEN = "8776739357:AAGDQzm89vmB4U5fGnZpIvmnu77hDd3iLuY";
+        const TELEGRAM_CHAT_ID = "8793892540";
+        const GOOGLE_SHEET_APP_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
         const products = [
             { 
-                id: 1, 
-                name: "Vellure Baccarat Rouge", 
-                category: "Floral", 
-                desc: "Rich, warm & unforgettable signature scent profile with amber and saffron notes.",
-                variants: [
-                    { size: "3ml", price: 330, img: "image2/Baccarat Rouge.png", img2: "image2/Baccarat Rouge.png" },
-                    { size: "6ml", price: 600, img: "image2/Baccarat Rouge.png", img2: "image2/Baccarat Rouge.png" }
-                ]
+                id: 101, 
+                name: "Vellure Signature Trio Pack", 
+                category: "Combo", 
+                notes: "Royal Oud + Baccarat Rouge + Musk Safi", 
+                top: "Saffron, Mint, White Musk", 
+                heart: "Amberwood, Ginger, Vanilla", 
+                base: "Regal Oud, Cedar, Soft Woods", 
+                rating: "★★★★★ (5.0)", 
+                desc: "Our top 3 premium luxury attars bundled together for maximum versatility and presence.", 
+                variants: { 
+                    "3ml Pack": { img: "image2/Vellure Signature Trio.png", img2: "image2/Baccarat Rouge.png", price: 850 }, 
+                    "6ml Pack": { img: "image2/Vellure Signature Trio.png", img2: "image2/Baccarat Rouge.png", price: 1550 } 
+                } 
             },
             { 
-                id: 2, 
-                name: "Vellure Blue De Chanel", 
-                category: "Fresh", 
-                desc: "A bold, fresh and deeply elegant modern fragrance with citrus and mint.",
-                variants: [
-                    { size: "3ml", price: 330, img: "image2/Blue DE Chanel.png", img2: "image2/Blue DE Chanel.png" },
-                    { size: "6ml", price: 600, img: "image2/Blue DE Chanel.png", img2: "image2/Blue DE Chanel.png" }
-                ]
+                id: 102, 
+                name: "The Gentleman's Edit Pack", 
+                category: "Combo", 
+                notes: "Blue De Chanel + Armani Blue + Cool Water", 
+                top: "Lemon, Mint, Cardamom, Seawater", 
+                heart: "Ginger, Lavender, Sandalwood", 
+                base: "Vetiver, Cedar, Musk", 
+                rating: "★★★★★ (4.9)", 
+                desc: "A bold, fresh and deeply masculine triple combination crafted for modern men.", 
+                variants: { 
+                    "3ml Pack": { img: "image2/The Gentleman's Edit.png", img2: "image2/Blue DE Chanel.png", price: 750 }, 
+                    "6ml Pack": { img: "image2/The Gentleman's Edit.png", img2: "image2/Blue DE Chanel.png", price: 1350 } 
+                } 
             },
             { 
-                id: 3, 
-                name: "Vellure Cool Water", 
-                category: "Fresh", 
-                desc: "Crisp, aquatic & invigorating freshness for daily sophistication.",
-                variants: [
-                    { size: "3ml", price: 330, img: "image2/cool water.png", img2: "image2/cool water.png" },
-                    { size: "6ml", price: 600, img: "image2/cool water.png", img2: "image2/cool water.png" }
-                ]
-            }
+                id: 103, 
+                name: "The Elegant Aura Pack", 
+                category: "Combo", 
+                notes: "Rose Gold + Bombshell + Saffron Rose", 
+                top: "Damask Rose, Passionfruit, Saffron", 
+                heart: "Peony, Vanilla Orchid, Amber", 
+                base: "Musk, Oakmoss, Light Oud", 
+                rating: "★★★★★ (5.0)", 
+                desc: "Charming, sweet, and floral elegance designed for special occasions.", 
+                variants: { 
+                    "3ml Pack": { img: "image2/The Elegant Aura.png", img2: "image2/Rose Gold.png", price: 780 }, 
+                    "6ml Pack": { img: "image2/The Elegant Aura.png", img2: "image2/Rose Gold.png", price: 1400 } 
+                } 
+            },
+            { 
+                id: 104, 
+                name: "Vellure Discovery Box (Set of 5)", 
+                category: "Combo", 
+                notes: "5 Bestseller Attars Sample Collection", 
+                top: "Bergamot, Citrus, Saffron, Rose", 
+                heart: "Amber, Spices, Lavender, Floral", 
+                base: "Oud, Sandalwood, Musk, Vanilla", 
+                rating: "★★★★★ (5.0)", 
+                desc: "The ultimate sampler box featuring 5 iconic Vellure attar scents.", 
+                variants: { 
+                    "3ml Pack": { img: "image2/Vellure Discovery Box.png", img2: "image2/Musk safi.png", price: 1250 }, 
+                    "6ml Pack": { img: "image2/Vellure Discovery Box.png", img2: "image2/Musk safi.png", price: 2200 } 
+                } 
+            },
+            { id: 1, name: "Vellure Baccarat Rouge", category: "Floral", notes: "Amber, Saffron, Cedar", top: "Saffron, Jasmine", heart: "Amberwood, Ambergris", base: "Fir Resin, Cedar", rating: "★★★★★ (5.0)", desc: "Rich, warm & unforgettable signature scent profile.", variants: { "3ml": { img: "image2/Baccarat Rouge.png", img2: "image2/Rose Gold.png", price: 330 }, "6ml": { img: "image2/Baccarat Rouge.png", img2: "image2/Rose Gold.png", price: 600 } } },
+            { id: 2, name: "Vellure Blue De Chanel", category: "Fresh", notes: "Citrus, Mint, Vetiver", top: "Lemon, Mint, Pink Pepper", heart: "Ginger, Iso E Super, Nutmeg", base: "Incense, Vetiver, Cedar", rating: "★★★★★ (4.9)", desc: "A bold, fresh and deeply elegant modern fragrance.", variants: { "3ml": { img: "image2/Blue DE Chanel.png", img2: "image2/cool water.png", price: 330 }, "6ml": { img: "image2/Blue DE Chanel.png", img2: "image2/cool water.png", price: 600 } } },
+            { id: 3, name: "Vellure Bombshell", category: "Floral", notes: "Passionfruit, Peony, Orchid", top: "Passionfruit, Grapefruit, Pineapple", heart: "Peony, Vanilla Orchid, Jasmine", base: "Musk, Woody Notes, Oakmoss", rating: "★★★★★ (4.8)", desc: "Fruity floral notes with a charming vibe.", variants: { "3ml": { img: "image2/Bombshell.png", img2: "image2/Baccarat Rouge.png", price: 330 }, "6ml": { img: "image2/Bombshell.png", img2: "image2/Baccarat Rouge.png", price: 600 } } },
+            { id: 4, name: "Vellure Cool Water", category: "Fresh", notes: "Sea Water, Mint, Lavender", top: "Seawater, Mint, Green Notes", heart: "Sandalwood, Jasmine, Neroli", base: "Musk, Cedar, Tobacco, Amber", rating: "★★★★★ (4.9)", desc: "Crisp, aquatic & invigorating freshness.", variants: { "3ml": { img: "image2/cool water.png", img2: "image2/Acqua Digio.png", price: 330 }, "6ml": { img: "image2/cool water.png", img2: "image2/Acqua Digio.png", price: 600 } } },
+            { id: 5, name: "Vellure Musk Safi", category: "Fresh", notes: "White Musk, Lily, Vanilla", top: "White Musk, Lily of the Valley", heart: "Vanilla, White Amber", base: "Powdery Musk, Soft Woods", rating: "★★★★★ (5.0)", desc: "Pure white musk with smooth velvety notes.", variants: { "3ml": { img: "image2/Musk safi.png", img2: "image2/Royal Sandal.png", price: 330 }, "6ml": { img: "image2/Musk safi.png", img2: "image2/Royal Sandal.png", price: 600 } } },
+            { id: 6, name: "Vellure Acqua Di Gio", category: "Fresh", notes: "Bergamot, Marine, Neroli", top: "Lime, Lemon, Bergamot", heart: "Sea Notes, Calone, Peach", base: "White Musk, Cedar, Patchouli", rating: "★★★★☆ (4.7)", desc: "Classic marine freshness for daily sophistication.", variants: { "3ml": { img: "image2/Acqua Digio.png", img2: "image2/cool water.png", price: 200 }, "6ml": { img: "image2/Acqua Digio.png", img2: "image2/cool water.png", price: 380 } } },
+            { id: 7, name: "Vellure Armani Blue", category: "Woody", notes: "Spicy Oriental, Cardamom", top: "Cardamom, Bergamot", heart: "Lavender, Iris", base: "Cedarwood, Amber", rating: "★★★★★ (4.8)", desc: "Deep, masculine & modern oriental aroma.", variants: { "3ml": { img: "image2/Armani Blue.png", img2: "image2/Royal oud.png", price: 200 }, "6ml": { img: "image2/Armani Blue.png", img2: "image2/Royal oud.png", price: 380 } } },
+            { id: 8, name: "Vellure Crimson", category: "Woody", notes: "Fiery Spices, Amber Wood", top: "Pink Pepper, Cinnamon", heart: "Amber, Red Spice", base: "Woody Musk, Tonka Bean", rating: "★★★★☆ (4.6)", desc: "Passionate, fiery & intense signature attar.", variants: { "3ml": { img: "image2/crismon.png", img2: "image2/Desire Red.png", price: 220 }, "6ml": { img: "image2/crismon.png", img2: "image2/Desire Red.png", price: 400 } } },
+            { id: 9, name: "Vellure Desire Red", category: "Woody", notes: "Apple, Bergamot, Teakwood", top: "Apple, Lemon, Neroli", heart: "Rose, Teak Wood, Patchouli", base: "Vanilla, Musk", rating: "★★★★★ (4.9)", desc: "Warm spicy notes designed for evening elegance.", variants: { "3ml": { img: "image2/Desire Red.png", img2: "image2/crismon.png", price: 250 }, "6ml": { img: "image2/Desire Red.png", img2: "image2/crismon.png", price: 450 } } },
+            { id: 10, name: "Vellure Rose Gold", category: "Floral", notes: "Damask Rose, Amber, Oud", top: "Damask Rose, Saffron", heart: "Amber, Sweet Floral", base: "Light Oud, Vanilla", rating: "★★★★★ (5.0)", desc: "Luxurious blend of sweet rose & amber.", variants: { "3ml": { img: "image2/Rose Gold.png", img2: "image2/Saffron Rose.png", price: 250 }, "6ml": { img: "image2/Rose Gold.png", img2: "image2/Saffron Rose.png", price: 450 } } },
+            { id: 11, name: "Vellure Royal Oud", category: "Woody", notes: "Agarwood, Sandalwood, Musk", top: "Lemon, Pink Berry, Bergamot", heart: "Cedar, Galbanum, Angelica Root", base: "Regal Indian Oud, Sandalwood", rating: "★★★★★ (5.0)", desc: "Majestic, woody oud with premium longevity.", variants: { "3ml": { img: "image2/Royal oud.png", img2: "image2/Royal Sandal.png", price: 330 }, "6ml": { img: "image2/Royal oud.png", img2: "image2/Royal Sandal.png", price: 600 } } },
+            { id: 12, name: "Vellure Saffron Rose", category: "Floral", notes: "Kashmiri Saffron, Rose Petals", top: "Kashmiri Saffron, Fresh Rose", heart: "Spicy Amber", base: "Soft Oud, Musk", rating: "★★★★☆ (4.7)", desc: "Exotic saffron combined with fresh floral accents.", variants: { "3ml": { img: "image2/Saffron Rose.png", img2: "image2/Rose Gold.png", price: 250 }, "6ml": { img: "image2/Saffron Rose.png", img2: "image2/Rose Gold.png", price: 450 } } },
+            { id: 13, name: "Vellure Royal Sandal", category: "Woody", notes: "Pure Mysore Sandalwood", top: "Creamy Sandalwood", heart: "Warm Amber", base: "Earthy Woody Musk", rating: "★★★★★ (4.9)", desc: "Soothing, creamy sandalwood fragrance.", variants: { "3ml": { img: "image2/Royal Sandal.png", img2: "image2/White chandan.png", price: 220 }, "6ml": { img: "image2/Royal Sandal.png", img2: "image2/White chandan.png", price: 400 } } },
+            { id: 14, name: "Vellure Vampire Blood", category: "Woody", notes: "Dark Plum, Leather, Vanilla", top: "Dark Plum, Cherry", heart: "Leather, Tobacco", base: "Dark Vanilla, Woods", rating: "★★★★★ (4.9)", desc: "Mysterious, dark & intoxicating blend.", variants: { "3ml": { img: "image2/Vampire Blood.png", img2: "image2/crismon.png", price: 200 }, "6ml": { img: "image2/Vampire Blood.png", img2: "image2/crismon.png", price: 380 } } },
+            { id: 15, name: "Vellure White Chandan", category: "Woody", notes: "White Sandalwood Extract", top: "Fresh Chandan", heart: "Herbal Green", base: "Smooth Sandalwood", rating: "★★★★★ (5.0)", desc: "Traditional pure white chandan extract.", variants: { "3ml": { img: "image2/White chandan.png", img2: "image2/Royal Sandal.png", price: 200 }, "6ml": { img: "image2/White chandan.png", img2: "image2/Royal Sandal.png", price: 380 } } }
         ];
 
         let cart = [];
-        let activeProduct = null;
-        let activeVariantIndex = 0;
+        let currentFilter = 'all';
+        let currentProduct = null;
 
-        function renderShopGrid() {
+        function renderProducts() {
             const grid = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
             grid.innerHTML = '';
-            products.forEach(prod => {
+            
+            const filtered = products.filter(p => {
+                const matchesCategory = currentFilter === 'all' || p.category === currentFilter;
+                const matchesSearch = p.name.toLowerCase().includes(searchVal);
+                return matchesCategory && matchesSearch;
+            });
+
+            filtered.forEach(prod => {
+                const variantKeys = Object.keys(prod.variants);
+                const defaultKey = variantKeys[0];
+                const defaultVariant = prod.variants[defaultKey];
+
+                let optionsHtml = '';
+                variantKeys.forEach(key => {
+                    optionsHtml += `<option value="${key}">${key}</option>`;
+                });
+
                 grid.innerHTML += `
-                    <div class="product-card" onclick="openProductDetail(${prod.id})">
-                        <div class="product-image-container">
-                            <img src="${prod.variants[0].img}" alt="${prod.name}" class="product-image">
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="openProductDetails(${prod.id})" title="Click to view details">
+                            <span class="stock-tag"><i class="fas fa-check"></i> In Stock</span>
+                            <img src="${defaultVariant.img}" alt="${prod.name}" class="product-image" loading="lazy" decoding="async" id="prod-img-${prod.id}">
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">${prod.name}</h3>
-                            <div class="product-price">৳ ${prod.variants[0].price} - ৳ ${prod.variants[prod.variants.length-1].price}</div>
-                            <button class="card-btn">View Details</button>
+                            <div class="rating">${prod.rating}</div>
+                            <h3 class="product-title" onclick="openProductDetails(${prod.id})">${prod.name}</h3>
+                            <div class="notes-tag" onclick="showNotesDetails(${prod.id})"><i class="fas fa-wind"></i> ${prod.notes} (Details)</div>
+                            <p class="product-desc">${prod.desc}</p>
+                            
+                            <div class="size-price-box">
+                                <select class="size-select" id="size-select-${prod.id}" onchange="updateCardVariant(${prod.id})">
+                                    ${optionsHtml}
+                                </select>
+                                <span class="product-price" id="price-display-${prod.id}">৳ ${defaultVariant.price}</span>
+                            </div>
+
+                            <button class="add-cart-btn" onclick="openProductDetails(${prod.id})">View Details / Add</button>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function openProductDetail(id) {
-            activeProduct = products.find(p => p.id === id);
-            activeVariantIndex = 0;
-            
-            document.getElementById('mainShopSection').style.display = 'none';
-            document.getElementById('productDetailSection').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            updatePDPUI();
+        function setFilter(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts();
         }
 
-        function updatePDPUI() {
-            if(!activeProduct) return;
-            const variant = activeProduct.variants[activeVariantIndex];
+        function filterProducts() { renderProducts(); }
 
-            document.getElementById('breadCat').innerText = activeProduct.category;
-            document.getElementById('breadName').innerText = activeProduct.name;
-            document.getElementById('pdpTitle').innerText = activeProduct.name;
-            document.getElementById('pdpPrice').innerText = `৳ ${variant.price}`;
-            document.getElementById('pdpDesc').innerText = activeProduct.desc;
-            document.getElementById('pdpTabDesc').innerText = activeProduct.desc + " 100% pure alcohol-free concentrated oil.";
+        function updateCardVariant(id) {
+            const prod = products.find(p => p.id === id);
+            const selectedSize = document.getElementById(`size-select-${id}`).value;
+            const variant = prod.variants[selectedSize];
+            document.getElementById(`prod-img-${id}`).src = variant.img;
+            document.getElementById(`price-display-${id}`).innerText = `৳ ${variant.price}`;
+        }
 
-            // Main & Thumbnails
-            document.getElementById('pdpMainImg').src = variant.img;
-            const thumbContainer = document.getElementById('pdpThumbnails');
-            thumbContainer.innerHTML = `
-                <img src="${variant.img}" class="pdp-thumb active" onclick="changeMainImage('${variant.img}', this)">
-                <img src="${variant.img2}" class="pdp-thumb" onclick="changeMainImage('${variant.img2}', this)">
-            `;
+        function openProductDetails(id) {
+            currentProduct = products.find(p => p.id === id);
+            if(!currentProduct) return;
+            
+            document.getElementById('modalTitle').innerText = currentProduct.name;
+            const sizeSelect = document.getElementById(`size-select-${id}`);
+            const selectedSize = sizeSelect ? sizeSelect.value : Object.keys(currentProduct.variants)[0];
+            const variant = currentProduct.variants[selectedSize];
+            
+            document.getElementById('modalPrice').innerText = '৳ ' + variant.price;
+            document.getElementById('modalImg1').src = variant.img;
+            document.getElementById('modalImg2').src = variant.img2 || variant.img;
+            
+            document.getElementById('productModal').style.display = 'flex';
+        }
 
-            // Variants buttons
-            const varContainer = document.getElementById('pdpVariants');
-            varContainer.innerHTML = '';
-            activeProduct.variants.forEach((v, idx) => {
-                varContainer.innerHTML += `<button class="variant-btn ${idx === activeVariantIndex ? 'active' : ''}" onclick="selectVariant(${idx})">${v.size}</button>`;
+        function addToCartFromModal() {
+            if(currentProduct) {
+                const sizeSelect = document.getElementById(`size-select-${currentProduct.id}`);
+                const selectedSize = sizeSelect ? sizeSelect.value : Object.keys(currentProduct.variants)[0];
+                const variant = currentProduct.variants[selectedSize];
+                const cartItemKey = `${currentProduct.id}-${selectedSize}`;
+                const itemInCart = cart.find(item => item.key === cartItemKey);
+
+                if (itemInCart) { itemInCart.qty += 1; } 
+                else { cart.push({ key: cartItemKey, name: currentProduct.name, size: selectedSize, price: variant.price, img: variant.img, qty: 1 }); }
+
+                updateCartUI(); 
+                document.getElementById('productModal').style.display = 'none';
+                openCart();
+            }
+        }
+
+        function updateQuantity(key, change) {
+            const item = cart.find(i => i.key === key);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) cart = cart.filter(i => i.key !== key);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBody = document.getElementById('cartBody');
+            const cartFooter = document.getElementById('cartFooter');
+            const subTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const delCharge = cart.length > 0 ? parseInt(document.getElementById('deliveryZone').value) : 0;
+            
+            document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('subTotal').innerText = `৳ ${subTotal}`;
+            document.getElementById('delCharge').innerText = `৳ ${delCharge}`;
+            document.getElementById('cartTotal').innerText = `৳ ${subTotal + delCharge}`;
+
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<p style="text-align: center; color: var(--text-muted); margin-top: 50px;">Your cart is empty.</p>';
+                cartFooter.style.display = 'none';
+                return;
+            }
+
+            cartFooter.style.display = 'block';
+            cartBody.innerHTML = '';
+            cart.forEach(item => {
+                cartBody.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" class="cart-item-img">
+                        <div style="flex-grow:1;">
+                            <div style="font-size:13px; font-weight:600;">${item.name}</div>
+                            <div style="font-size:11px; color:var(--accent-gold);">${item.size} - ৳ ${item.price}</div>
+                            <div style="margin-top:4px;">
+                                <button style="padding:0 6px;" onclick="updateQuantity('${item.key}', -1)">-</button>
+                                <span style="font-size:12px; margin:0 6px;">${item.qty}</span>
+                                <button style="padding:0 6px;" onclick="updateQuantity('${item.key}', 1)">+</button>
+                            </div>
+                        </div>
+                        <button style="background:none; border:none; color:#ff4d4d;" onclick="updateQuantity('${item.key}', -${item.qty})"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
             });
-
-            // WhatsApp link
-            const waText = encodeURIComponent(`Hello Vellure, I want to order ${activeProduct.name} (${activeProduct.variants[activeVariantIndex].size}) for ৳${activeProduct.variants[activeVariantIndex].price}.`);
-            document.getElementById('whatsappOrderBtn').href = `https://wa.me/8801820032330?text=${waText}`;
-        }
-
-        function selectVariant(idx) {
-            activeVariantIndex = idx;
-            updatePDPUI();
-        }
-
-        function changeMainImage(imgSrc, thumbEl) {
-            document.getElementById('pdpMainImg').src = imgSrc;
-            document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
-            thumbEl.classList.add('active');
-        }
-
-        function goHome() {
-            document.getElementById('productDetailSection').style.display = 'none';
-            document.getElementById('mainShopSection').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function addCurrentToCart() {
-            if(!activeProduct) return;
-            const variant = activeProduct.variants[activeVariantIndex];
-            const itemKey = `${activeProduct.id}-${variant.size}`;
-            const existing = cart.find(i => i.key === itemKey);
-            if(existing) { existing.qty += 1; }
-            else { cart.push({ key: itemKey, name: activeProduct.name, size: variant.size, price: variant.price, img: variant.img, qty: 1 }); }
-            
-            document.getElementById('cartCount').innerText = cart.reduce((s, i) => s + i.qty, 0);
-            alert("Product added to cart successfully!");
-        }
-
-        function buyNowCurrent() {
-            addCurrentToCart();
-            alert("Proceeding to checkout...");
         }
 
         function toggleCart() {
-            alert("Cart drawer opened. Total items: " + cart.length);
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('open');
+            document.getElementById('cartOverlay').style.display = drawer.classList.contains('open') ? 'block' : 'none';
         }
 
-        renderShopGrid();
+        function openCart() {
+            document.getElementById('cartDrawer').classList.add('open');
+            document.getElementById('cartOverlay').style.display = 'block';
+        }
+
+        function showNotesDetails(id) {
+            const prod = products.find(p => p.id === id);
+            document.getElementById('modalAttarTitle').innerText = prod.name;
+            document.getElementById('modalNotesBody').innerHTML = `
+                <p style="font-size:13px; color:#ccc; margin-bottom:12px;">Full Fragrance Pyramid Breakdown:</p>
+                <div class="notes-pyramid">
+                    <div><strong>Top Notes:</strong> ${prod.top}</div>
+                    <div><strong>Heart Notes:</strong> ${prod.heart}</div>
+                    <div><strong>Base Notes:</strong> ${prod.base}</div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted);">${prod.desc}</p>
+            `;
+            document.getElementById('notesModal').style.display = 'flex';
+        }
+
+        async function processDirectOrder() {
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+
+            if (!name || !phone || !address) {
+                alert("Please fill in your Name, Phone Number, and Delivery Address.");
+                return;
+            }
+
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.innerText = "Processing Order...";
+            confirmBtn.disabled = true;
+
+            const subTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const delCharge = parseInt(document.getElementById('deliveryZone').value);
+            const grandTotal = subTotal + delCharge;
+            const zoneText = delCharge === 80 ? "Inside Dhaka" : "Outside Dhaka";
+            
+            const orderItems = cart.map(i => `${i.name} (${i.size}) x${i.qty}`).join(', ');
+
+            if (GOOGLE_SHEET_APP_URL !== "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+                try {
+                    await fetch(GOOGLE_SHEET_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, address, items: orderItems, total: grandTotal, deliveryZone: zoneText })
+                    });
+                } catch (e) { console.error("Sheet Error:", e); }
+            }
+
+            const message = `🛍️ *NEW ORDER RECEIVED!*\n\n` +
+                            `👤 *Name:* ${name}\n` +
+                            `📞 *Phone:* ${phone}\n` +
+                            `📍 *Address:* ${address}\n` +
+                            `🚚 *Zone:* ${zoneText}\n\n` +
+                            `📦 *Items:* ${orderItems}\n\n` +
+                            `💰 *Total Amount:* ৳${grandTotal} (COD)`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'Markdown' })
+                });
+            } catch (e) { console.error("Telegram Error:", e); }
+
+            let detailsHtml = `<p><strong>Name:</strong> ${name}</p>`;
+            detailsHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
+            detailsHtml += `<p><strong>Address:</strong> ${address}</p><hr style="border-color:#333; margin:8px 0;">`;
+            cart.forEach(item => { detailsHtml += `<p>• ${item.name} (${item.size}) x${item.qty} - ৳${item.price * item.qty}</p>`; });
+            detailsHtml += `<hr style="border-color:#333; margin:8px 0;"><p><strong>Grand Total:</strong> ৳${grandTotal} (Cash on Delivery)</p>`;
+
+            document.getElementById('modalOrderDetails').innerHTML = detailsHtml;
+            document.getElementById('orderModal').style.display = 'flex';
+            
+            cart = [];
+            updateCartUI();
+            toggleCart();
+            confirmBtn.innerText = "Confirm Order Now";
+            confirmBtn.disabled = false;
+        }
+
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function showPolicy(type) {
+            const body = document.getElementById('policyModalBody');
+            if (type === 'privacy') {
+                body.innerHTML = `
+                    <h2>Privacy Policy</h2>
+                    <p>At Vellure Fragrances, we value your privacy and are committed to protecting your personal information.</p>
+                    <ul>
+                        <li><strong>Information Collection:</strong> We only collect customer details (Name, Phone Number, Address) required to process and deliver your order safely.</li>
+                        <li><strong>Data Protection:</strong> Your personal information is kept strictly confidential and will never be shared or sold to third parties.</li>
+                    </ul>
+                `;
+            } else if (type === 'terms') {
+                body.innerHTML = `
+                    <h2>Terms & Conditions</h2>
+                    <p>By placing an order on Vellure Fragrances, you agree to the following terms:</p>
+                    <ul>
+                        <li><strong>Product Integrity:</strong> All products are 100% alcohol-free concentrated perfume oils.</li>
+                        <li><strong>Pricing:</strong> Product prices are subject to availability and delivery charges vary based on your location.</li>
+                    </ul>
+                `;
+            } else if (type === 'refund') {
+                body.innerHTML = `
+                    <h2>Return & Refund Policy</h2>
+                    <p>We take pride in providing premium attars. If you receive a damaged product, please refer to our return process below:</p>
+                    <ul>
+                        <li><strong>Inspection on Delivery:</strong> Customers are encouraged to check the package in front of the delivery agent.</li>
+                        <li><strong>Replacement/Refund:</strong> We offer a hassle-free replacement or full refund for verified damaged items.</li>
+                    </ul>
+                `;
+            }
+            document.getElementById('policyModal').style.display = 'flex';
+        }
+
+        renderProducts();
     </script>
 </body>
 </html>

@@ -356,7 +356,24 @@
         </div>
         <div class="footer-bottom">&copy; 2026 Vellure Fragrances. All rights reserved.</div>
     </footer>
-
+<!-- Product Details Modal (২টি ফটো সহ) -->
+<div id="productModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8); overflow:auto;">
+  <div style="background:#121212; color:#fff; margin:5% auto; padding:20px; border:1px solid #d4af37; width:90%; max-width:700px; border-radius:8px; position:relative;">
+    <span onclick="document.getElementById('productModal').style.display='none'" style="position:absolute; right:15px; top:10px; font-size:25px; cursor:pointer;">&times;</span>
+    <div style="display:flex; flex-wrap:wrap; gap:20px;">
+      <div style="flex:1; min-width:200px;">
+        <img id="modalImg1" src="" style="width:100%; border-radius:5px; margin-bottom:10px;">
+        <img id="modalImg2" src="" style="width:100%; border-radius:5px;">
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice" style="color:#d4af37; font-size:18px; margin:10px 0;"></p>
+        <p>১০০% অ্যালকোহল ফ্রি এবং দীর্ঘস্থায়ী প্রিমিয়াম সুবাস।</p>
+        <button onclick="addToCartFromModal()" style="background:#d4af37; color:#000; border:none; padding:10px; width:100%; font-weight:bold; cursor:pointer; margin-top:15px;">Confirm Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script>
         const TELEGRAM_BOT_TOKEN = "8776739357:AAGDQzm89vmB4U5fGnZpIvmnu77hDd3iLuY";
         const TELEGRAM_CHAT_ID = "8793892540";
@@ -705,7 +722,29 @@
             }
             document.getElementById('policyModal').style.display = 'flex';
         }
+let currentProduct = null;
+function openProductDetails(id) {
+  currentProduct = products.find(p => p.id === id);
+  if(!currentProduct) return;
+  document.getElementById('modalTitle').innerText = currentProduct.name;
+  
+  const sizeSelect = document.getElementById(`size-select-${id}`);
+  const selectedSize = sizeSelect ? sizeSelect.value : Object.keys(currentProduct.variants)[0];
+  const variant = currentProduct.variants[selectedSize];
+  
+  document.getElementById('modalPrice').innerText = '৳' + variant.price;
+  document.getElementById('modalImg1').src = variant.img;
+  document.getElementById('modalImg2').src = currentProduct.img2 || variant.img;
+  
+  document.getElementById('productModal').style.display = 'block';
+}
 
+function addToCartFromModal() {
+  if(currentProduct) {
+    addToCart(currentProduct.id);
+    document.getElementById('productModal').style.display = 'none';
+  }
+}
         renderProducts();
     </script>
 </body>
